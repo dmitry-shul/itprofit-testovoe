@@ -1,7 +1,9 @@
+const path = require('path');
+
 module.exports = { 
   entry: [ 
-    './src/script.js', 
-    './src/style.scss' 
+    './src/index.js', 
+    './src/index.scss' 
   ], 
   output: { 
     path: __dirname, 
@@ -36,7 +38,7 @@ module.exports = {
         ] 
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.scss$/i,
         use: [
           // Creates `style` nodes from JS strings
           "style-loader",
@@ -47,5 +49,13 @@ module.exports = {
         ],
       },
     ] 
-  } 
+  },
+  devServer: {
+    webSocketServer: false,
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
+    compress: true,
+    port: 9090,
+  },
 };
