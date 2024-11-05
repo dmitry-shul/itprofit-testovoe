@@ -21,7 +21,7 @@ html {
 :root {
   --color-background: #ffffff;
   --color-text: #000000;
-  --color-yellow: #FFA501
+  --color-yellow: #FFA501;
 }
 
 body {
@@ -188,6 +188,14 @@ button {
   margin-top: -10px;
 }
 
+.contacts__form-error {
+  max-width: 280px;
+  color: #ff1111;
+  font-size: 12px;
+  font-weight: 500;
+  text-wrap: wrap;
+}
+
 .form-button {
   margin-top: 24px;
   font-size: 15px;
@@ -206,14 +214,6 @@ button {
 
 .form-button:hover {
   opacity: 0.8;
-}
-
-.contacts__form-error {
-  max-width: 280px;
-  color: #ff1111;
-  font-size: 12px;
-  font-weight: 500;
-  text-wrap: wrap;
 }
 
 
@@ -372,8 +372,8 @@ button {
 }
 
 .modal {
-  width: 300px;
-  height: 400px;
+  width: 400px;
+  height: 200px;
   background-color: #ffffff;
   border-radius: 10px;
   animation: modal 0.4s ease;
@@ -396,4 +396,13 @@ button {
 .modal p {
   font-size: 32px;
   text-align: center;
+}
+
+.noscroll {
+  overflow: hidden;
+  padding-right: var(--scrollWidth);
+}
+
+.form_invalid {
+  border: 2px solid #ff1111;
 }
