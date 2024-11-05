@@ -44,22 +44,19 @@ module.exports = {
       {
         test: /\.scss$/i,
         use: [
-          // Creates `style` nodes from JS strings
           "style-loader",
-          // Translates CSS into CommonJS
           "css-loader",
-          // Compiles Sass to CSS
           "sass-loader",
         ],
       },
     ] 
   },
   devServer: {
-    webSocketServer: false,
+    /*webSocketServer: false,*/
     static: {
       directory: path.join(__dirname, '/'),
     },
-    compress: true,
-    port: 9090,
+    /*compress: true,
+    port: 9090,*/
   },
 };
