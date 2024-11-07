@@ -16,13 +16,13 @@ module.exports = {
         test: /\.html$/,
         loader: "html-loader",
       },
-      { 
+      /*{ 
         test: /\.js$/, 
         exclude: /node_modules/, 
         use: { 
           loader: "script-loader" 
         } 
-      }, 
+      },*/ 
       { 
         test: /\.css$/, 
         use: [ 
