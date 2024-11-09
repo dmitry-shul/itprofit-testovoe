@@ -45,8 +45,8 @@ const validationEmail = (email) => {
 }
 
 const validationPhone = (phone) => {
-  const result = phone.length === 19 ? false : true
-  if(result) {
+  const result = phone.length === 19 ? true : false
+  if(!result) {
     inputPhone.classList.add("form_invalid")
     inputPhoneError.innerHTML = "Телефон должен иметь следующий формат: +375 (00) 000-00-00"
   } else {
@@ -73,8 +73,6 @@ export const validationForm = () => {
   const validEmail = validationEmail(inputEmail.value)
   const validPhone = validationPhone(inputPhone.value)
   const validMessage = validationMessage(textAreaMessage.value)
-
-  console.log("valid")
   
   return validName && validEmail && validPhone && validMessage
 }

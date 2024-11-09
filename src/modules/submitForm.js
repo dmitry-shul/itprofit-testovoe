@@ -1,9 +1,14 @@
-let isLoading = false
+const inputName = document.getElementById("contacts__form-input-name")
+const inputEmail = document.getElementById("contacts__form-input-email")
+const inputPhone = document.getElementById("contacts__form-input-phone")
+const textAreaMessage = document.getElementById("contacts__form-message")
+const sendBtn = document.querySelector(".send-btn")
+const fetchMessage = document.querySelector(".fetch-message")
 
 export const sendFormToServer = async () => {
-  isLoading = true
+  sendBtn.innerText = "Отправляется..."
   try {
-    await fetch("/api/registration", {
+    await fetch("http://localhost:9090/api/submit", {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -16,16 +21,21 @@ export const sendFormToServer = async () => {
         message: textAreaMessage.value,
       })
     })
-    .then((response) => response.json())
-
-    console.log("done")
-    
+    .then((response) => response.json())  
+    .then((response) => {
+      fetchMessage.innerText = response.status === "error" ? response.fields.inputName : response.msg
+      fetchMessage.style = response.status === "error" ? "color: red;" : "color: green;"
+    })
   } catch (error) {
     console.log(error.message)
   } finally {
-    isLoading = false
+    sendBtn.innerText = "Отправить сообщение"
     inputName.value = ""
+    inputPhone.value = ""
     inputEmail.value = ""
     textAreaMessage.value = ""
+    setTimeout(() => {
+      fetchMessage.innerText = ""
+    }, 3000)
   }
 }

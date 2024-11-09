@@ -22,10 +22,6 @@ closeModalBtn.addEventListener("click", () => {
 })
 
 
-//validation
-
-
-
 //form
 import { validationForm } from "./modules/validation";
 import { sendFormToServer } from "./modules/submitForm";
@@ -35,7 +31,5 @@ const form = document.querySelector(".contacts__form")
 form.addEventListener("submit", (e) => {
   e.preventDefault()
   const validation = validationForm()
-  validationForm()
-  /*validation &&*/ sendFormToServer()
-  console.log("fff")
+  validation && sendFormToServer()
 })

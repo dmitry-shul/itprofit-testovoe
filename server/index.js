@@ -38,3 +38,27 @@ app.get("/api/ping", (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+
+app.post("/api/submit", (req, res) => {
+  if (Math.random() > 0.5) {
+    res.statusCode = 400;
+    
+    setTimeout(() => {
+      res.send({
+        status: "error",
+        fields: {
+          inputName: "Сообщение об ошибке",
+        }
+      });
+    }, Math.random() * 1000);
+    return;
+  }
+
+  setTimeout(() => {
+    res.statusCode = 200;
+    res.send({
+      "status": "success",
+      "msg": "Ваша заявка успешно отправлена"
+    });
+  }, Math.random() * 1000);
+});
